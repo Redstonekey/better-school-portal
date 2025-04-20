@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Better School Portal",
+  "version": "1.0",
+  "description": "Improves the appearance of the school portal.",
+  "permissions": ["activeTab"],
+  "host_permissions": [
+    "https://schulportal.hessen.de/*",
+    "https://start.schulportal.hessen.de/*"
+  ],
+  "web_accessible_resources": [{
+    "resources": ["login.html", "home.html"],
+    "matches": [
+      "https://schulportal.hessen.de/*",
+      "https://start.schulportal.hessen.de/*"
+    ]
+  }],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://schulportal.hessen.de/*",
+        "https://start.schulportal.hessen.de/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
