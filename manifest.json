@@ -9,7 +9,7 @@
     "https://start.schulportal.hessen.de/*"
   ],
   "web_accessible_resources": [{
-    "resources": ["html/*", "images/*", "styles/*", "js/*", "styles.css"],
+    "resources": ["html/*", "images/*", "styles/*", "js/*", "styles.css", "js/meinuntericht.js"],
     "matches": [
       "https://schulportal.hessen.de/*",
       "https://start.schulportal.hessen.de/*"
