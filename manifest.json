@@ -3,26 +3,30 @@
   "name": "Better School Portal",
   "version": "1.0",
   "description": "Improves the appearance of the school portal.",
-  "permissions": ["activeTab"],
+  "permissions": [
+          "activeTab",
+          "scripting"
+      ],
   "host_permissions": [
     "https://schulportal.hessen.de/*",
     "https://start.schulportal.hessen.de/*"
-  ],
-  "web_accessible_resources": [{
-    "resources": ["html/*", "images/*", "styles/*", "js/*", "styles.css", "js/meinuntericht.js"],
-    "matches": [
-      "https://schulportal.hessen.de/*",
-      "https://start.schulportal.hessen.de/*"
-    ]
-  }],
-  "content_scripts": [
-    {
-      "matches": [
+    ],
+    "web_accessible_resources": [{
+    "resources": ["html/*", "images/*", "styles/*", "styles.css"],
+     "matches": [
         "https://schulportal.hessen.de/*",
         "https://start.schulportal.hessen.de/*"
-      ],
-      "js": ["content.js"],
-      "css": ["styles.css"]
-    }
-  ]
-}
+      ]
+    }],
+    "content_scripts": [
+      {
+        "matches": [
+          "https://schulportal.hessen.de/*",
+          "https://start.schulportal.hessen.de/*"
+        ],
+        "js": ["content.js"],
+        "css": ["styles.css"],
+        "type": "module"
+      }
+    ]
+  }
