@@ -1,0 +1,431 @@
+:root {
+--primary: #4361ee;
+--secondary: #3f37c9;
+--accent: #4895ef;
+--light: #f8f9fa;
+--dark: #212529;
+--success: #4cc9f0;
+--warning: #f72585;
+--gray-100: #f8f9fa;
+--gray-200: #e9ecef;
+--gray-300: #dee2e6;
+--gray-800: #343a40;
+--spacing-sm: 0.5rem;
+--spacing-md: 1rem;
+--spacing-lg: 1.5rem;
+--spacing-xl: 2rem;
+--border-radius: 12px; /* Slightly smaller radius for items */
+--card-radius: 16px; /* Larger radius for main sections */
+}
+
+/* Basic reset and font */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Inter', sans-serif; /* Using Inter font for a modern look */
+}
+
+/* Body styling - allows content to spread out more */
+body {
+background-color: var(--light);
+color: var(--dark);
+min-width: 350px;
+margin: 0 auto; /* Center content */
+padding-bottom: var(--spacing-xl); /* Add generous padding at the bottom */
+max-width: 800px; /* Added max-width from the second style */
+}
+
+/* Header styling */
+header {
+background: linear-gradient(135deg, var(--primary), var(--secondary));
+color: white;
+padding: var(--spacing-lg); /* Using consistent spacing variable */
+border-radius: 0 0 var(--card-radius) var(--card-radius); /* Using consistent radius variable */
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+margin-bottom: var(--spacing-xl); /* Using consistent spacing variable */
+position: relative;
+}
+
+/* User info in header */
+.user-info {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: var(--spacing-md); /* Using consistent spacing variable */
+}
+
+/* Avatar styling */
+.avatar {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background-color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--primary);
+font-weight: bold;
+font-size: 1.2rem;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+margin-right: var(--spacing-md); /* Using consistent spacing variable */
+}
+
+/* Date display styling */
+.date-display {
+text-align: right;
+font-size: 0.9rem;
+opacity: 0.9; /* Slightly less transparent */
+line-height: 1.4; /* Better line spacing */
+}
+
+/* Main heading in header */
+h1 {
+font-size: 1.8rem; /* Slightly larger heading */
+margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
+}
+
+/* Tagline styling */
+.tagline {
+font-size: 1rem; /* Slightly larger tagline */
+opacity: 0.9; /* Slightly less transparent */
+}
+
+/* Main content area padding */
+main {
+padding: 0 var(--spacing-lg); /* Consistent padding on sides */
+}
+
+/* Styling for quick access/section cards */
+.quick-access {
+background-color: white;
+border-radius: var(--card-radius); /* Using consistent radius variable */
+padding: var(--spacing-lg); /* Using consistent spacing variable */
+margin-bottom: var(--spacing-xl); /* Using consistent spacing variable */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+border: 1px solid var(--gray-200);
+}
+
+/* Section title styling */
+.section-title {
+font-size: 1.2rem; /* Slightly larger section title */
+margin-bottom: var(--spacing-lg); /* More space below title */
+display: flex;
+align-items: center;
+color: var(--dark);
+font-weight: 600;
+}
+
+/* Section icon styling */
+.section-icon {
+width: 28px; /* Slightly larger icons */
+height: 28px;
+margin-right: var(--spacing-sm); /* Using consistent spacing variable */
+fill: var(--primary);
+}
+
+/* Styles for homework items - Using Flexbox for layout */
+.homework-item {
+display: flex; /* Enable flexbox */
+align-items: flex-start; /* Align items to the top */
+padding: var(--spacing-md) 0; /* Vertical padding */
+border-bottom: 1px solid var(--gray-200);
+gap: var(--spacing-md); /* Space between teacher and content */
+}
+
+.homework-item:last-child {
+border-bottom: none;
+}
+
+/* Teacher info styling - now on the left */
+.teacher-info {
+flex-shrink: 0; /* Prevent shrinking */
+width: 80px; /* Fixed width for teacher info */
+background-color: var(--gray-200);
+padding: var(--spacing-sm); /* Using consistent spacing variable */
+border-radius: var(--border-radius); /* Use item border radius */
+font-size: 0.8rem;
+font-weight: 600;
+text-align: center;
+color: var(--gray-800);
+align-self: center; /* Center vertically within the flex item */
+}
+
+/* Homework content styling */
+.homework-content {
+flex-grow: 1; /* Allow content to take available space */
+}
+
+.homework-content h3 {
+font-size: 1rem;
+margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
+color: var(--primary);
+font-weight: 600;
+}
+
+.homework-content p {
+font-size: 0.9rem;
+margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
+color: var(--dark);
+line-height: 1.5; /* Improve readability */
+}
+
+/* Link styling */
+.homework-content a {
+display: inline-block;
+font-size: 0.8rem;
+color: var(--accent);
+text-decoration: none;
+font-weight: 600;
+transition: color 0.2s ease;
+margin-top: var(--spacing-sm); /* Space above the link */
+}
+
+.homework-content a:hover {
+text-decoration: underline;
+color: var(--secondary);
+}
+
+/* Styling for placeholder text when no homework is found */
+.quick-access > p { /* Target paragraph directly inside quick-access */
+font-size: 1rem; /* Slightly larger text */
+color: var(--gray-800);
+text-align: center;
+padding: var(--spacing-md); /* Add padding around the text */
+}
+
+/* Footer styling */
+footer {
+text-align: center;
+padding: var(--spacing-lg) var(--spacing-md); /* Using consistent spacing variables */
+font-size: 0.8rem;
+color: var(--gray-800);
+opacity: 0.8; /* Slightly less transparent */
+}
+
+/* Icon Container (from original, kept but might not be needed with direct SVG use) */
+.icon-container {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) { /* Adjust breakpoint for tablets/larger phones */
+body {
+    padding-bottom: var(--spacing-lg); /* Using consistent spacing variable */
+}
+main {
+    padding: 0 var(--spacing-md); /* Reduce horizontal padding on smaller screens */
+}
+.quick-access {
+    padding: var(--spacing-md); /* Reduce padding inside sections */
+    margin-bottom: var(--spacing-lg); /* Using consistent spacing variable */
+}
+header {
+    padding: var(--spacing-md); /* Reduce header padding */
+    margin-bottom: var(--spacing-lg); /* Using consistent spacing variable */
+}
+h1 {
+    font-size: 1.5rem; /* Adjust header font size */
+}
+.tagline {
+    font-size: 0.9rem; /* Adjust tagline font size */
+}
+.section-title {
+    font-size: 1.1rem; /* Adjust section title font size */
+    margin-bottom: var(--spacing-md); /* Using consistent spacing variable */
+}
+.section-icon {
+    width: 24px; /* Adjust section icon size */
+    height: 24px;
+}
+
+/* Adjust homework item layout for smaller screens if needed */
+.homework-item {
+    flex-direction: column; /* Stack teacher and content */
+    align-items: stretch; /* Stretch items to fill width */
+    gap: var(--spacing-sm); /* Smaller gap when stacked */
+}
+
+.teacher-info {
+    width: auto; /* Auto width when stacked */
+    text-align: left; /* Align teacher info left when stacked */
+    align-self: flex-start; /* Align to the start when stacked */
+}
+
+.homework-content a {
+    margin-top: var(--spacing-sm); /* Keep space above link */
+}
+}
+
+@media (max-width: 480px) { /* Further adjustments for very small screens */
+header {
+    padding: var(--spacing-sm); /* Using consistent spacing variable */
+}
+.user-info {
+    flex-direction: column; /* Stack user info and date */
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
+}
+.avatar {
+    margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
+}
+.date-display {
+    text-align: left;
+}
+h1 {
+    font-size: 1.3rem;
+}
+.tagline {
+    font-size: 0.8rem;
+}
+main {
+    padding: 0 var(--spacing-sm); /* Using consistent spacing variable */
+}
+.quick-access {
+    padding: var(--spacing-sm); /* Using consistent spacing variable */
+}
+.section-title {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
+}
+.homework-item {
+    padding: var(--spacing-sm) 0; /* Using consistent spacing variable */
+}
+.homework-content h3 {
+    font-size: 0.9rem;
+}
+.homework-content p {
+    font-size: 0.85rem;
+}
+.teacher-info {
+    font-size: 0.75rem;
+}
+footer {
+    padding: var(--spacing-md) var(--spacing-sm); /* Using consistent spacing variables */
+}
+}
+
+/* Styles from the second block that are new or different */
+.nav-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 16px;
+margin-bottom: 24px;
+}
+
+.nav-item {
+background-color: white;
+border-radius: 16px;
+padding: 1.5rem;
+text-align: center;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+transition: all 0.3s ease;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 140px;
+text-decoration: none;
+color: var(--dark);
+position: relative;
+overflow: hidden;
+border: 1px solid var(--gray-200);
+}
+
+.nav-item:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+border-color: var(--primary);
+}
+
+.nav-item::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 4px;
+height: 100%;
+background-color: var(--primary);
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.nav-item:hover::before {
+opacity: 1;
+}
+
+.nav-icon {
+width: 40px;
+height: 40px;
+margin-bottom: 12px;
+fill: var(--primary);
+}
+
+.nav-label {
+font-weight: 600;
+font-size: 1rem;
+margin-bottom: 5px;
+}
+
+.nav-description {
+font-size: 0.8rem;
+color: var(--gray-800);
+opacity: 0.7;
+}
+
+.notification {
+position: absolute;
+top: 10px;
+right: 10px;
+background-color: var(--warning);
+color: white;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.7rem;
+font-weight: bold;
+}
+
+.task-list {
+list-style: none;
+}
+
+.task-item {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 12px 0;
+border-bottom: 1px solid var(--gray-200);
+}
+
+.task-item:last-child {
+border-bottom: none;
+}
+
+.task-subject {
+background-color: var(--gray-200);
+padding: 4px 8px;
+border-radius: 4px;
+font-size: 0.7rem;
+font-weight: 600;
+margin-right: 10px;
+min-width: 60px;
+text-align: center;
+}
+
+.task-content {
+flex-grow: 1;
+font-size: 0.9rem;
+}
+
+.task-date {
+font-size: 0.8rem;
+color: var(--gray-800);
+opacity: 0.7;
+}

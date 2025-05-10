@@ -278,34 +278,38 @@ if (currentPath === '/wp-login.php') {
 } 
 // Handle home page
 else if (window.location.hostname === 'start.schulportal.hessen.de' && 
-    (window.location.pathname === '/' || window.location.pathname === '/index.php')) {
+(window.location.pathname === '/' || window.location.pathname === '/index.php')) {
+
         console.log('Home page detected');
-        fetch(chrome.runtime.getURL('html/home.html'))
-            .then(response => response.text())
-            .then(html => {
-                const nameMatch = document.querySelector('.fa-child')?.parentElement?.textContent?.trim().match(/([^(]+)/);
-                const fullName = nameMatch ? nameMatch[1].trim() : '';
-                const firstName = fullName.split(',')[1]?.trim().split(' ')[0] || 'Benutzer';
-                const initials = fullName.split(',').map(part => part.trim()[0]).join('');
-                
-                // Replace the placeholder HTML with actual user data and fix resource paths
-                html = replaceResourcePaths(html)
-                    .replace('$MS', initials)
-                    .replace('$PLACEHOLDERNAME', firstName)
-                    .replace('$DATENOW', new Date().toLocaleDateString('de-DE', {
-                        month: '2-digit',
-                        day: '2-digit'
-                    }))
-                    .replace('$DAYNOW', new Date().toLocaleDateString('de-DE', {
-                        weekday: 'long'
-                    }));
-                
-                document.open();
-                document.write(html);
-                document.close();
-            })
-            .catch(error => console.error('Failed to load Better school Portal HTML:', error));
-}
+        Promise.all([
+            fetch(chrome.runtime.getURL('html/home.html')).then(response => response.text()),
+            fetch(chrome.runtime.getURL('css/style.css')).then(response => response.text())
+        ])
+
+        .then(([html, css]) => {
+            const nameMatch = document.querySelector('.fa-child')?.parentElement?.textContent?.trim().match(/([^(]+)/);
+            const fullName = nameMatch ? nameMatch[1].trim() : '';
+            const firstName = fullName.split(',')[1]?.trim().split(' ')[0] || 'Benutzer';
+            const initials = fullName.split(',').map(part => part.trim()[0]).join('');
+            const styleTag = document.createElement('style');
+            styleTag.textContent = css;
+            html = replaceResourcePaths(html)
+                .replace('</head>', `${styleTag.outerHTML}</head>`)
+                .replace('$MS', initials)
+                .replace('$PLACEHOLDERNAME', firstName)
+                .replace('$DATENOW', new Date().toLocaleDateString('de-DE', {
+                    month: '2-digit',
+                    day: '2-digit'
+                }))
+                .replace('$DAYNOW', new Date().toLocaleDateString('de-DE', {
+                    weekday: 'long'
+                }));
+            
+            document.open();
+            document.write(html);
+            document.close();
+        }) 
+    }
 
 // Handle calendar page start.schulportal.hessen.de/kalender.php
 if (window.location.hostname === 'start.schulportal.hessen.de' && 
@@ -335,7 +339,11 @@ if (window.location.hostname === 'start.schulportal.hessen.de' &&
     (window.location.search === '?homework')) {
 
     console.log('Meinunterricht page detected');
-
+    
+    Promise.all([
+        fetch(chrome.runtime.getURL('html/home.html')).then(response => response.text()),
+        fetch(chrome.runtime.getURL('css/style.css')).then(response => response.text())
+    ])
     async function loadMeinunterrichtPage() {
         try {
             const homeworkData = await scraper.homework();
