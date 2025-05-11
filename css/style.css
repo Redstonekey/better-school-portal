@@ -1,431 +1,384 @@
+/* Base Styles */
 :root {
---primary: #4361ee;
---secondary: #3f37c9;
---accent: #4895ef;
---light: #f8f9fa;
---dark: #212529;
---success: #4cc9f0;
---warning: #f72585;
---gray-100: #f8f9fa;
---gray-200: #e9ecef;
---gray-300: #dee2e6;
---gray-800: #343a40;
---spacing-sm: 0.5rem;
---spacing-md: 1rem;
---spacing-lg: 1.5rem;
---spacing-xl: 2rem;
---border-radius: 12px; /* Slightly smaller radius for items */
---card-radius: 16px; /* Larger radius for main sections */
+    /* Color Palette */
+    --primary-color: #4a6ce8;
+    --primary-dark: #3954b4;
+    --primary-light: #eef1fd;
+    --secondary-color: #6c757d;
+    --secondary-light: #e2e3e5;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --white: #ffffff;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    
+    /* Subject Colors */
+    --science-color: #28a745;
+    --math-color: #4a6ce8;
+    --german-color: #dc3545;
+    --english-color: #6f42c1;
+    --history-color: #fd7e14;
+    --sports-color: #20c997;
+    --art-color: #e83e8c;
+    --music-color: #17a2b8;
+    
+    /* Layout */
+    --container-max-width: 1200px;
+    --grid-gap: 1.5rem;
+    --border-radius: 0.5rem;
+    --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --box-shadow-lg: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    
+    /* Typography */
+    --font-family-sans-serif: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-sm: 0.875rem;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Spacing */
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 1rem;
+    --spacing-4: 1.5rem;
+    --spacing-5: 3rem;
 }
 
-/* Basic reset and font */
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Inter', sans-serif; /* Using Inter font for a modern look */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Body styling - allows content to spread out more */
 body {
-background-color: var(--light);
-color: var(--dark);
-min-width: 350px;
-margin: 0 auto; /* Center content */
-padding-bottom: var(--spacing-xl); /* Add generous padding at the bottom */
-max-width: 800px; /* Added max-width from the second style */
+    font-family: var(--font-family-sans-serif);
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-100);
+    padding-top: 60px; /* Adjust for fixed navbar */
 }
 
-/* Header styling */
-header {
-background: linear-gradient(135deg, var(--primary), var(--secondary));
-color: white;
-padding: var(--spacing-lg); /* Using consistent spacing variable */
-border-radius: 0 0 var(--card-radius) var(--card-radius); /* Using consistent radius variable */
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-margin-bottom: var(--spacing-xl); /* Using consistent spacing variable */
-position: relative;
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-3);
 }
 
-/* User info in header */
-.user-info {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: var(--spacing-md); /* Using consistent spacing variable */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
 }
 
-/* Avatar styling */
-.avatar {
-width: 50px;
-height: 50px;
-border-radius: 50%;
-background-color: white;
-display: flex;
-align-items: center;
-justify-content: center;
-color: var(--primary);
-font-weight: bold;
-font-size: 1.2rem;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-margin-right: var(--spacing-md); /* Using consistent spacing variable */
+a:hover {
+    color: var(--primary-dark);
 }
 
-/* Date display styling */
-.date-display {
-text-align: right;
-font-size: 0.9rem;
-opacity: 0.9; /* Slightly less transparent */
-line-height: 1.4; /* Better line spacing */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--spacing-2);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
 }
 
-/* Main heading in header */
-h1 {
-font-size: 1.8rem; /* Slightly larger heading */
-margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
+p {
+    margin-bottom: var(--spacing-3);
 }
 
-/* Tagline styling */
-.tagline {
-font-size: 1rem; /* Slightly larger tagline */
-opacity: 0.9; /* Slightly less transparent */
+ul {
+    list-style: none;
 }
 
-/* Main content area padding */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 main {
-padding: 0 var(--spacing-lg); /* Consistent padding on sides */
+    padding: var(--spacing-4) 0;
+    min-height: calc(100vh - 140px); /* Adjust for navbar and footer */
 }
 
-/* Styling for quick access/section cards */
-.quick-access {
-background-color: white;
-border-radius: var(--card-radius); /* Using consistent radius variable */
-padding: var(--spacing-lg); /* Using consistent spacing variable */
-margin-bottom: var(--spacing-xl); /* Using consistent spacing variable */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-border: 1px solid var(--gray-200);
+/* Buttons */
+.btn {
+    display: inline-block;
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    border-radius: var(--border-radius);
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
 }
 
-/* Section title styling */
-.section-title {
-font-size: 1.2rem; /* Slightly larger section title */
-margin-bottom: var(--spacing-lg); /* More space below title */
-display: flex;
-align-items: center;
-color: var(--dark);
-font-weight: 600;
+.btn-primary {
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
-/* Section icon styling */
-.section-icon {
-width: 28px; /* Slightly larger icons */
-height: 28px;
-margin-right: var(--spacing-sm); /* Using consistent spacing variable */
-fill: var(--primary);
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
 }
 
-/* Styles for homework items - Using Flexbox for layout */
-.homework-item {
-display: flex; /* Enable flexbox */
-align-items: flex-start; /* Align items to the top */
-padding: var(--spacing-md) 0; /* Vertical padding */
-border-bottom: 1px solid var(--gray-200);
-gap: var(--spacing-md); /* Space between teacher and content */
+.btn-secondary {
+    color: var(--white);
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
-.homework-item:last-child {
-border-bottom: none;
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
 }
 
-/* Teacher info styling - now on the left */
-.teacher-info {
-flex-shrink: 0; /* Prevent shrinking */
-width: 80px; /* Fixed width for teacher info */
-background-color: var(--gray-200);
-padding: var(--spacing-sm); /* Using consistent spacing variable */
-border-radius: var(--border-radius); /* Use item border radius */
-font-size: 0.8rem;
-font-weight: 600;
-text-align: center;
-color: var(--gray-800);
-align-self: center; /* Center vertically within the flex item */
+.btn-danger {
+    color: var(--white);
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
 }
 
-/* Homework content styling */
-.homework-content {
-flex-grow: 1; /* Allow content to take available space */
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
 }
 
-.homework-content h3 {
-font-size: 1rem;
-margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
-color: var(--primary);
-font-weight: 600;
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: var(--font-size-sm);
 }
 
-.homework-content p {
-font-size: 0.9rem;
-margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
-color: var(--dark);
-line-height: 1.5; /* Improve readability */
+.btn-link {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
 }
 
-/* Link styling */
-.homework-content a {
-display: inline-block;
-font-size: 0.8rem;
-color: var(--accent);
-text-decoration: none;
-font-weight: 600;
-transition: color 0.2s ease;
-margin-top: var(--spacing-sm); /* Space above the link */
+.btn-link:hover {
+    text-decoration: underline;
 }
 
-.homework-content a:hover {
-text-decoration: underline;
-color: var(--secondary);
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 0.5rem 0;
+    z-index: 1000;
 }
 
-/* Styling for placeholder text when no homework is found */
-.quick-access > p { /* Target paragraph directly inside quick-access */
-font-size: 1rem; /* Slightly larger text */
-color: var(--gray-800);
-text-align: center;
-padding: var(--spacing-md); /* Add padding around the text */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Footer styling */
-footer {
-text-align: center;
-padding: var(--spacing-lg) var(--spacing-md); /* Using consistent spacing variables */
-font-size: 0.8rem;
-color: var(--gray-800);
-opacity: 0.8; /* Slightly less transparent */
+.logo a {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--dark-color);
+    text-decoration: none;
 }
 
-/* Icon Container (from original, kept but might not be needed with direct SVG use) */
-.icon-container {
-display: inline-flex;
-align-items: center;
-justify-content: center;
+.logo span {
+    color: var(--primary-color);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) { /* Adjust breakpoint for tablets/larger phones */
-body {
-    padding-bottom: var(--spacing-lg); /* Using consistent spacing variable */
-}
-main {
-    padding: 0 var(--spacing-md); /* Reduce horizontal padding on smaller screens */
-}
-.quick-access {
-    padding: var(--spacing-md); /* Reduce padding inside sections */
-    margin-bottom: var(--spacing-lg); /* Using consistent spacing variable */
-}
-header {
-    padding: var(--spacing-md); /* Reduce header padding */
-    margin-bottom: var(--spacing-lg); /* Using consistent spacing variable */
-}
-h1 {
-    font-size: 1.5rem; /* Adjust header font size */
-}
-.tagline {
-    font-size: 0.9rem; /* Adjust tagline font size */
-}
-.section-title {
-    font-size: 1.1rem; /* Adjust section title font size */
-    margin-bottom: var(--spacing-md); /* Using consistent spacing variable */
-}
-.section-icon {
-    width: 24px; /* Adjust section icon size */
-    height: 24px;
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
 }
 
-/* Adjust homework item layout for smaller screens if needed */
-.homework-item {
-    flex-direction: column; /* Stack teacher and content */
-    align-items: stretch; /* Stretch items to fill width */
-    gap: var(--spacing-sm); /* Smaller gap when stacked */
+.nav-links a {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
 }
 
-.teacher-info {
-    width: auto; /* Auto width when stacked */
-    text-align: left; /* Align teacher info left when stacked */
-    align-self: flex-start; /* Align to the start when stacked */
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
 }
 
-.homework-content a {
-    margin-top: var(--spacing-sm); /* Keep space above link */
-}
-}
-
-@media (max-width: 480px) { /* Further adjustments for very small screens */
-header {
-    padding: var(--spacing-sm); /* Using consistent spacing variable */
-}
-.user-info {
-    flex-direction: column; /* Stack user info and date */
-    align-items: flex-start;
-    margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
-}
-.avatar {
-    margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
-}
-.date-display {
-    text-align: left;
-}
-h1 {
-    font-size: 1.3rem;
-}
-.tagline {
-    font-size: 0.8rem;
-}
-main {
-    padding: 0 var(--spacing-sm); /* Using consistent spacing variable */
-}
-.quick-access {
-    padding: var(--spacing-sm); /* Using consistent spacing variable */
-}
-.section-title {
-    font-size: 1rem;
-    margin-bottom: var(--spacing-sm); /* Using consistent spacing variable */
-}
-.homework-item {
-    padding: var(--spacing-sm) 0; /* Using consistent spacing variable */
-}
-.homework-content h3 {
-    font-size: 0.9rem;
-}
-.homework-content p {
-    font-size: 0.85rem;
-}
-.teacher-info {
-    font-size: 0.75rem;
-}
-footer {
-    padding: var(--spacing-md) var(--spacing-sm); /* Using consistent spacing variables */
-}
+.nav-links a i {
+    margin-right: 0.25rem;
 }
 
-/* Styles from the second block that are new or different */
-.nav-grid {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 16px;
-margin-bottom: 24px;
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
-.nav-item {
-background-color: white;
-border-radius: 16px;
-padding: 1.5rem;
-text-align: center;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-transition: all 0.3s ease;
-cursor: pointer;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 140px;
-text-decoration: none;
-color: var(--dark);
-position: relative;
-overflow: hidden;
-border: 1px solid var(--gray-200);
+.user-profile img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.nav-item:hover {
-transform: translateY(-5px);
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-border-color: var(--primary);
+.user-profile span {
+    font-weight: var(--font-weight-medium);
 }
 
-.nav-item::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 4px;
-height: 100%;
-background-color: var(--primary);
-opacity: 0;
-transition: opacity 0.3s ease;
+/* Cards */
+.card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: var(--spacing-4);
+    overflow: hidden;
 }
 
-.nav-item:hover::before {
-opacity: 1;
+.card-header {
+    padding: var(--spacing-3);
+    background-color: var(--gray-100);
+    border-bottom: 1px solid var(--gray-300);
+    display: flex;
+    align-items: center;
 }
 
-.nav-icon {
-width: 40px;
-height: 40px;
-margin-bottom: 12px;
-fill: var(--primary);
+.card-header h2 {
+    margin-bottom: 0;
+    font-size: var(--font-size-lg);
 }
 
-.nav-label {
-font-weight: 600;
-font-size: 1rem;
-margin-bottom: 5px;
+.card-header i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
 }
 
-.nav-description {
-font-size: 0.8rem;
-color: var(--gray-800);
-opacity: 0.7;
+.card-header.with-actions {
+    display: flex;
+    justify-content: space-between;
 }
 
-.notification {
-position: absolute;
-top: 10px;
-right: 10px;
-background-color: var(--warning);
-color: white;
-width: 20px;
-height: 20px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 0.7rem;
-font-weight: bold;
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.task-list {
-list-style: none;
+.card-body {
+    padding: var(--spacing-3);
 }
 
-.task-item {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 12px 0;
-border-bottom: 1px solid var(--gray-200);
+.card-footer {
+    padding: var(--spacing-3);
+    background-color: var(--gray-100);
+    border-top: 1px solid var(--gray-300);
+    text-align: right;
 }
 
-.task-item:last-child {
-border-bottom: none;
+/* Welcome Banner */
+.welcome-banner {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-4);
+    overflow: hidden;
+    position: relative;
 }
 
-.task-subject {
-background-color: var(--gray-200);
-padding: 4px 8px;
-border-radius: 4px;
-font-size: 0.7rem;
-font-weight: 600;
-margin-right: 10px;
-min-width: 60px;
-text-align: center;
+.welcome-content {
+    padding: var(--spacing-4);
+    z-index: 1;
+    position: relative;
 }
 
-.task-content {
-flex-grow: 1;
-font-size: 0.9rem;
+.welcome-banner h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
-.task-date {
-font-size: 0.8rem;
-color: var(--gray-800);
-opacity: 0.7;
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--grid-gap);
+}
+
+/* Event List */
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    background-color: var(--gray-100);
+    transition: transform 0.2s ease-in-out;
+}
+
+.event-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow);
+}
+
+.event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: var(--border-radius);
+    width: 60px;
+    height: 60px;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.event-date.special {
+    background-color: var(--danger-color);
+}
+
+.event-date .day {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+.event-date .month {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+}
+
+.event-details h3 {
+    margin-bottom: 0.25rem;
+    font-size: var(--font-size-base);
 }

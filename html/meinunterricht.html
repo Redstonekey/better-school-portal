@@ -3,371 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Unterricht - Schulportal</title>
-    <style>
-        /* CSS Variables for consistent theming */
-        :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --warning: #f72585;
-            --gray-100: #f8f9fa;
-            --gray-200: #e9ecef;
-            --gray-300: #dee2e6;
-            --gray-800: #343a40;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --border-radius: 12px; /* Slightly smaller radius for items */
-            --card-radius: 16px; /* Larger radius for main sections */
-        }
-
-        /* Basic reset and font */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif; /* Using Inter font for a modern look */
-        }
-
-        /* Body styling - allows content to spread out more */
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            min-width: 350px;
-            margin: 0 auto; /* Center content */
-            padding-bottom: var(--spacing-xl); /* Add generous padding at the bottom */
-             /* Removed max-width to allow wider layout on larger screens */
-        }
-
-        /* Header styling */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: var(--spacing-lg);
-            border-radius: 0 0 var(--card-radius) var(--card-radius);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: var(--spacing-xl);
-            position: relative;
-        }
-
-        /* User info in header */
-        .user-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: var(--spacing-md);
-        }
-
-        /* Avatar styling */
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-             /* Added margin-right for spacing if needed, though justify-content handles it */
-             margin-right: var(--spacing-md);
-        }
-
-        /* Date display styling */
-        .date-display {
-            text-align: right;
-            font-size: 0.9rem;
-            opacity: 0.9; /* Slightly less transparent */
-            line-height: 1.4; /* Better line spacing */
-        }
-
-        /* Main heading in header */
-        h1 {
-            font-size: 1.8rem; /* Slightly larger heading */
-            margin-bottom: var(--spacing-sm);
-        }
-
-        /* Tagline styling */
-        .tagline {
-            font-size: 1rem; /* Slightly larger tagline */
-            opacity: 0.9; /* Slightly less transparent */
-        }
-
-        /* Main content area padding */
-        main {
-            padding: 0 var(--spacing-lg); /* Consistent padding on sides */
-        }
-
-        /* Styling for quick access/section cards */
-        .quick-access {
-            background-color: white;
-            border-radius: var(--card-radius);
-            padding: var(--spacing-lg);
-            margin-bottom: var(--spacing-xl);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--gray-200);
-        }
-
-        /* Section title styling */
-        .section-title {
-            font-size: 1.2rem; /* Slightly larger section title */
-            margin-bottom: var(--spacing-lg); /* More space below title */
-            display: flex;
-            align-items: center;
-            color: var(--dark);
-             font-weight: 600;
-        }
-
-        /* Section icon styling */
-        .section-icon {
-            width: 28px; /* Slightly larger icons */
-            height: 28px;
-            margin-right: var(--spacing-sm);
-            fill: var(--primary);
-        }
-
-        /* Styles for homework items - Using Flexbox for layout */
-        .homework-item {
-            display: flex; /* Enable flexbox */
-            align-items: flex-start; /* Align items to the top */
-            padding: var(--spacing-md) 0; /* Vertical padding */
-            border-bottom: 1px solid var(--gray-200);
-            gap: var(--spacing-md); /* Space between teacher and content */
-        }
-
-        .homework-item:last-child {
-            border-bottom: none;
-        }
-
-        /* Teacher info styling - now on the left */
-        .teacher-info {
-            flex-shrink: 0; /* Prevent shrinking */
-            width: 80px; /* Fixed width for teacher info */
-            background-color: var(--gray-200);
-            padding: var(--spacing-sm);
-            border-radius: var(--border-radius); /* Use item border radius */
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-align: center;
-            color: var(--gray-800);
-             align-self: center; /* Center vertically within the flex item */
-        }
-
-        /* Homework content styling */
-        .homework-content {
-            flex-grow: 1; /* Allow content to take available space */
-        }
-
-        .homework-content h3 {
-            font-size: 1rem;
-            margin-bottom: var(--spacing-sm);
-            color: var(--primary);
-             font-weight: 600;
-        }
-
-        .homework-content p {
-            font-size: 0.9rem;
-            margin-bottom: var(--spacing-sm);
-            color: var(--dark);
-            line-height: 1.5; /* Improve readability */
-        }
-
-        /* Link styling */
-        .homework-content a {
-            display: inline-block;
-            font-size: 0.8rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
-            margin-top: var(--spacing-sm); /* Space above the link */
-        }
-
-        .homework-content a:hover {
-            text-decoration: underline;
-            color: var(--secondary);
-        }
-
-        /* Styling for placeholder text when no homework is found */
-        .quick-access > p { /* Target paragraph directly inside quick-access */
-             font-size: 1rem; /* Slightly larger text */
-             color: var(--gray-800);
-             text-align: center;
-             padding: var(--spacing-md); /* Add padding around the text */
-        }
-
-
-        /* Footer styling */
-        footer {
-            text-align: center;
-            padding: var(--spacing-lg) var(--spacing-md);
-            font-size: 0.8rem;
-            color: var(--gray-800);
-            opacity: 0.8; /* Slightly less transparent */
-        }
-
-        /* Icon Container (from original, kept but might not be needed with direct SVG use) */
-        .icon-container {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) { /* Adjust breakpoint for tablets/larger phones */
-            body {
-                padding-bottom: var(--spacing-lg);
-            }
-            main {
-                padding: 0 var(--spacing-md); /* Reduce horizontal padding on smaller screens */
-            }
-            .quick-access {
-                padding: var(--spacing-md); /* Reduce padding inside sections */
-                margin-bottom: var(--spacing-lg);
-            }
-            header {
-                 padding: var(--spacing-md); /* Reduce header padding */
-                 margin-bottom: var(--spacing-lg);
-            }
-            h1 {
-                 font-size: 1.5rem; /* Adjust header font size */
-            }
-            .tagline {
-                 font-size: 0.9rem; /* Adjust tagline font size */
-            }
-            .section-title {
-                 font-size: 1.1rem; /* Adjust section title font size */
-                 margin-bottom: var(--spacing-md);
-            }
-             .section-icon {
-                 width: 24px; /* Adjust section icon size */
-                 height: 24px;
-             }
-
-            /* Adjust homework item layout for smaller screens if needed */
-             .homework-item {
-                 flex-direction: column; /* Stack teacher and content */
-                 align-items: stretch; /* Stretch items to fill width */
-                 gap: var(--spacing-sm); /* Smaller gap when stacked */
-             }
-
-             .teacher-info {
-                 width: auto; /* Auto width when stacked */
-                 text-align: left; /* Align teacher info left when stacked */
-                 align-self: flex-start; /* Align to the start when stacked */
-             }
-
-             .homework-content a {
-                 margin-top: var(--spacing-sm); /* Keep space above link */
-             }
-        }
-         @media (max-width: 480px) { /* Further adjustments for very small screens */
-             header {
-                 padding: var(--spacing-sm);
-             }
-             .user-info {
-                 flex-direction: column; /* Stack user info and date */
-                 align-items: flex-start;
-                 margin-bottom: var(--spacing-sm);
-             }
-             .avatar {
-                 margin-bottom: var(--spacing-sm);
-             }
-             .date-display {
-                 text-align: left;
-             }
-             h1 {
-                 font-size: 1.3rem;
-             }
-             .tagline {
-                 font-size: 0.8rem;
-             }
-             main {
-                 padding: 0 var(--spacing-sm);
-             }
-             .quick-access {
-                 padding: var(--spacing-sm);
-             }
-             .section-title {
-                 font-size: 1rem;
-                 margin-bottom: var(--spacing-sm);
-             }
-             .homework-item {
-                 padding: var(--spacing-sm) 0;
-             }
-             .homework-content h3 {
-                 font-size: 0.9rem;
-             }
-             .homework-content p {
-                 font-size: 0.85rem;
-             }
-             .teacher-info {
-                 font-size: 0.75rem;
-             }
-             footer {
-                 padding: var(--spacing-md) var(--spacing-sm);
-             }
-         }
-
-
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>SchulPortal - Meine Kurse</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="user-info">
-            <div class="avatar">$MS</div>
-            <div class="date-display">
-                <div id="current-date">$DAYNOW, $DATENOW</div>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Schul<span>Portal</span></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Startseite</a>
+                <a href="classes.html" class="active"><i class="fas fa-book"></i> Meine Kurse</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Kalender</a>
+                <a href="#"><i class="fas fa-envelope"></i> Nachrichten</a>
+            </div>
+            <div class="user-profile">
+                <img src="/api/placeholder/40/40" alt="Profilbild">
+                <span>Max Mustermann</span>
             </div>
         </div>
-        <h1>Schulportal</h1>
-        <p class="tagline">Willkommen zurück, $PLACEHOLDERNAME!</p>
-    </header>
+    </nav>
 
-    <main>
-        <div class="quick-access">
-            <h2 class="section-title">
-                 <svg class="section-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M9,17H7v-7h2V17z M13,17h-2V7h2V17z M17,17h-2v-4h2V17z"/>
-                </svg>
-                Hausaufgaben
-            </h2>
-            <div id="homework-list"></div>
-
-        </div>
-
-        <div class="quick-access">
-            <h2 class="section-title">
-                 <svg class="section-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19,4h-1V3c0-0.6-0.4-1-1-1s-1,0.4-1,1v1H8V3c0-0.6-0.4-1-1-1S6,2.4,6,3v1H5C3.3,4,2,5.3,2,7v12c0,1.7,1.3,3,3,3h14 c1.7,0,3-1.3,3-3V7C22,5.3,20.7,4,19,4z M20,19c0,0.6-0.4,1-1,1H5c-0.6,0-1-0.4-1-1v-8h16V19z M20,9H4V7c0-0.6,0.4-1,1-1h1v1 c0,0.6,0.4,1,1,1s1-0.4,1-1V6h8v1c0,0.6,0.4,1,1,1s1-0.4,1-1V6h1c0.6,0,1,0.4,1,1V9z"/>
-                    <rect x="6" y="12" width="2" height="2"/>
-                    <rect x="10" y="12" width="2" height="2"/>
-                    <rect x="14" y="12" width="2" height="2"/>
-                    <rect x="6" y="16" width="2" height="2"/>
-                    <rect x="10" y="16" width="2" height="2"/>
-                    <rect x="14" y="16" width="2" height="2"/>
-                 </svg>
-                Stundenplan (Heute)
-            </h2>
-            <div>
-                <p>Hier könnte dein Stundenplan stehen.</p>
+    <main class="container">
+        <section class="page-header">
+            <h1><i class="fas fa-book"></i> Meine Kurse</h1>
+            <div class="page-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Kurs suchen...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-options">
+                    <select>
+                        <option value="all">Alle Fächer</option>
+                        <option value="hauptfaecher">Hauptfächer</option>
+                        <option value="nebenfaecher">Nebenfächer</option>
+                        <option value="wahlkurse">Wahlkurse</option>
+                    </select>
+                </div>
             </div>
-         </div>
+        </section>
 
+        <div class="classes-grid">
+            <a href="class-detail.html" class="class-card science">
+                <div class="class-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="class-info">
+                    <h2>Naturwissenschaften</h2>
+                    <p>Fr. Becker | Raum 302</p>
+                    <div class="class-meta">
+                        <span><i class="fas fa-clock"></i> Mo, Mi, Fr</span>
+                        <span><i class="fas fa-exclamation-circle"></i> Klausur in 12 Tagen</span>
+                    </div>
+                </div>
+            </a>
 
+            <a href="#" class="class-card math">
+                <div class="class-icon">
+                    <i class="fas fa-square-root-alt"></i>
+                </div>
+                <div class="class-info">
+                    <h2>Mathematik</h2>
+                    <p>Fr. Schmidt | Raum 204</p>
+                    <div class="class-meta">
+                        <span><i class="fas fa-clock"></i> Mo, Di, Do</span>
+                        <span><i class="fas fa-exclamation-circle"></i> Klausur in 3 Tagen</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="class-card german">
+                <div class="class-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="class-info">
+                    <h2>Deutsch</h2>
+                    <p>Hr. Weber | Raum 108</p>
+                    <div class="class-meta">
+                        <span><i class="fas fa-clock"></i> Mo, Mi</span>
+                        <span><i class="fas fa-clipboard-check"></i> Keine anstehenden Prüfungen</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="class-card english">
+                <div class="class-icon">
+                    <i class="fas fa-globe-europe"></i>
+                </div>
+                <div class="class-info">
+                    <h2>Englisch</h2>
+                    <p>Fr. Müller | Raum 115</p>
+                    <div class="class-meta">
+                        <span><i class="fas fa-clock"></i> Di, Do</span>
+                        <span><i class="fas fa-tasks"></i> Präsentation nächste Woche</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="class-card history">
+                <div class="class-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div class="class-info">
+                    <h2>Geschichte</h2>
+                    <p>Hr. Fischer | Raum 112</p>
+                    <div class="class-meta">
+                        <span><i class="fas fa-clock"></i> Mi, Fr</span>
+                        <span><i class="fas fa-tasks"></i> Präsentation in 7 Tagen</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="class-card sports">
+                <div class="class-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <div class="class-info">
+                    <h2>Sport</h2>
+                    <p>Hr. Bauer | Sporthalle</p>
+                    <div class="class-meta">
+                        <span><i class="fas fa-clock"></i> Di, Do</span>
+                        <span><i class="fas fa-info-circle"></i> Sportfest in 3 Wochen</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="class-card art">
+                <div class="class-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="class-info">
+                    <h2>Kunst</h2>
+                    <p>Fr. Klein | Raum 301</p>
+                    <div class="class-meta">
+                        <span><i class="fas fa-clock"></i> Fr</span>
+                        <span><i class="fas fa-tasks"></i> Projektabgabe in 2 Wochen</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="class-card music">
+                <div class="class-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="class-info">
+                    <h2>Musik</h2>
+                    <p>Hr. Schulz | Raum 210</p>
+                    <div class="class-meta">
+                        <span><i class="fas fa-clock"></i> Mo</span>
+                        <span><i class="fas fa-microphone"></i> Konzert am Ende des Monats</span>
+                    </div>
+                </div>
+            </a>
+        </div>
     </main>
 
     <footer>
-        <p>© 2025 School Portal • Version 1.0</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Schul<span>Portal</span></a>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Hilfe</a>
+                    <a href="#">Kontakt</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">Impressum</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SchulPortal. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
     </footer>
-
 </body>
 </html>

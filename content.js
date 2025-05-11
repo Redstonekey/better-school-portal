@@ -1,3 +1,11 @@
+//claude weiter generierven lassen!!!!
+//claude weiter generierven lassen!!!!
+//claude weiter generierven lassen!!!!
+//claude weiter generierven lassen!!!!
+//claude weiter generierven lassen!!!!
+//claude weiter generierven lassen!!!!
+//claude weiter generierven lassen!!!!
+
 class scrap {
     url = "https://start.schulportal.hessen.de";
 
